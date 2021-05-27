@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/taste-notes",
+      "handler": "taste-notes.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/taste-notes/count",
+      "handler": "taste-notes.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/taste-notes/:id",
+      "handler": "taste-notes.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/taste-notes",
+      "handler": "taste-notes.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/taste-notes/:id",
+      "handler": "taste-notes.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/taste-notes/:id",
+      "handler": "taste-notes.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

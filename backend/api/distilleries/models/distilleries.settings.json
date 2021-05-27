@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "distilleries",
+  "info": {
+    "name": "Distilleries",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "country": {
+      "type": "string",
+      "required": true
+    },
+    "whiskies": {
+      "via": "distillery",
+      "collection": "whiskies"
+    },
+    "region": {
+      "type": "string"
+    },
+    "owner": {
+      "via": "distilleries",
+      "model": "owner"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/whiskies",
+      "handler": "whiskies.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/whiskies/count",
+      "handler": "whiskies.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/whiskies/:id",
+      "handler": "whiskies.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/whiskies",
+      "handler": "whiskies.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/whiskies/:id",
+      "handler": "whiskies.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/whiskies/:id",
+      "handler": "whiskies.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

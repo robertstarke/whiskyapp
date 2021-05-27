@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "characteristics",
+  "info": {
+    "name": "Characteristics"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "whiskies": {
+      "via": "characteristics",
+      "collection": "whiskies",
+      "dominant": true
+    }
+  }
+}

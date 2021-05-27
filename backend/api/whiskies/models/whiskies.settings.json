@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "whiskies",
+  "info": {
+    "name": "Whiskies",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "abv": {
+      "type": "decimal"
+    },
+    "age": {
+      "type": "string",
+      "required": true,
+      "regex": "[1-9][0-9]?|NAS"
+    },
+    "rating": {
+      "type": "decimal",
+      "default": 0,
+      "required": false,
+      "max": 10,
+      "min": 0
+    },
+    "taste_notes": {
+      "via": "whiskies",
+      "collection": "taste-notes"
+    },
+    "characteristics": {
+      "via": "whiskies",
+      "collection": "characteristics"
+    },
+    "distillery": {
+      "via": "whiskies",
+      "model": "distilleries"
+    }
+  }
+}

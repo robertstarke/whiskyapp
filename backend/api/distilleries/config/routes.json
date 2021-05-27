@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/distilleries",
+      "handler": "distilleries.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/distilleries/count",
+      "handler": "distilleries.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/distilleries/:id",
+      "handler": "distilleries.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/distilleries",
+      "handler": "distilleries.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/distilleries/:id",
+      "handler": "distilleries.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/distilleries/:id",
+      "handler": "distilleries.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
