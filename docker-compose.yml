@@ -1,0 +1,50 @@
+services:
+  nextjs:
+    image: whiskyapp
+    build:
+      context: .
+      dockerfile: nextjs_dockerfile
+    ports:
+      - 3000:3000
+
+  strapi:
+    image: strapi/strapi
+    environment:
+      DATABASE_CLIENT: mongo
+      DATABASE_NAME: whiskyapp
+      DATABASE_HOST: mongo
+      DATABASE_PORT: 27017
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: root
+    volumes:
+      - ./app:/srv/app
+    ports:
+      - 1337:1337
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MONGO_INITDB_DATABASE=whiskyapp
+    ports:
+      - 27017:27017
+    volumes:
+      - mongothegame:/data/db
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=root
+    links:
+      - mongo
+
+  volumes:
+    mongothegame:
+
