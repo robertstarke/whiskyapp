@@ -1,9 +1,7 @@
-import { NextPage } from "next";
-import React from "react";
-import StaticRating from "~/components/rating/StaticRating";
 import Link from "next/link";
+import StaticRating from "~/components/rating/StaticRating";
 
-const WhiskyCard: NextPage<any> = ({ whisky }) => {
+const WhiskyCard = ({ whisky }) => {
   const age = whisky.age === "NAS" ? "NAS" : whisky.age + " years";
 
   return (

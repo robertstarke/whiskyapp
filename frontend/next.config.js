@@ -1,7 +1,8 @@
 module.exports = {
-  env: {
-    DB_HOST: "localhost",
-    DB_PORT: "27017",
-    DB_DATABASE: "whisky"
+  serverRuntimeConfig: {
+    CMS_URL: "http://strapi:1337/graphql"
+  },
+  publicRuntimeConfig: {
+    CMS_URL: "http://localhost:1337/graphql"
   }
 };

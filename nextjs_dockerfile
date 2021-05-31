@@ -12,6 +12,9 @@ WORKDIR /app
 COPY /frontend .
 COPY /frontend/package.json /frontend/yarn.lock ./
 COPY --from=deps /app/node_modules ./node_modules
+
+ENV NEXT_TELEMETRY_DISABLED 1
+
 RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 
 # Production image, copy all the files and run next

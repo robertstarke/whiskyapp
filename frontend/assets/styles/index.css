@@ -4,6 +4,5 @@
 /* purgecss end ignore */
 
 @import "./button.css";
-@import "./rating.css";
 
 @import '~tailwindcss/utilities.css';

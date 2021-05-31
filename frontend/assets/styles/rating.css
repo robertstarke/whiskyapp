@@ -1,9 +1,0 @@
-.wa-rating-star-container {
-    @apply relative inline-block h-5 w-5 align-middle;
-}
-.wa-rating-star {
-    @apply fill-current text-gray-200;
-}
-.wa-rating-star.active {
-    @apply text-green-400;
-}
