@@ -1,22 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongo-express
-  namespace: whiskyapp
+  name: mongoexpress
   labels:
-    app: mongo-express
+    app: mongoexpress
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mongo-express
+      app: mongoexpress
   template:
     metadata:
       labels:
-        app: mongo-express
+        app: mongoexpress
     spec:
       containers:
-        - name: mongo-express
+        - name: mongoexpress
           image: mongo-express
           ports:
             - containerPort: 8081
