@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongoexpress-configmap
+  namespace: whiskyapp
+data:
+  db_host: "mongodb-service"
+  db_port: "27017"

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: strapi-config
+data:
+  databaseClient: "mongo"
+  databaseName: "whiskyapp"

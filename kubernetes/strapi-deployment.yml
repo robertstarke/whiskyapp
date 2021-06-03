@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: strapi
+  labels:
+    app: strapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: strapi
+  serviceName: strapi-service
+  template:
+    metadata:
+      labels:
+        app: strapi
+    spec:
+      containers:
+        - name: strapi
+          image: strapi/strapi
+          imagePullPolicy: Always
+          env:
+            - name: DATABASE_CLIENT
+              valueFrom:
+                configMapKeyRef:
+                  name: strapi-config
+                  key: databaseClient
+            - name: DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: strapi-config
+                  key: databaseName
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: password
+            - name: DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-configmap
+                  key: db_host
+            - name: DATABASE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-configmap
+                  key: db_port
+          ports:
+            - containerPort: 1337
+              protocol: TCP
+          volumeMounts:
+            - name: strapi-pv-claim
+              mountPath: /srv/app
+  volumeClaimTemplates:
+    - metadata:
+        name: strapi-pv-claim
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        dataSource: null
+        resources:
+          requests:
+            storage: 25Mi
