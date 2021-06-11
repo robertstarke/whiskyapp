@@ -1,0 +1,37 @@
+.wa-btn {
+    @apply p-1 transition-colors duration-200 border-2 text-center font-semibold rounded-sm cursor-pointer;
+}
+
+.wa-btn-green {
+    @apply border-green-500 bg-white text-green-500;
+}
+
+.wa-btn-green:hover {
+    @apply bg-green-500 text-white;
+}
+
+.wa-btn-red {
+    @apply border-red-600 bg-white text-red-600;
+}
+
+.wa-btn-red:hover {
+    @apply bg-red-600 text-white;
+}
+
+.wa-btn-white {
+    @apply border-white bg-red-600 text-white;
+}
+
+.wa-btn-white:hover {
+    @apply bg-white text-red-600;
+}
+
+.wa-nav-btn {
+    @apply inline-block px-3 py-1;
+}
+.wa-btn-dark-green {
+    @apply border-white text-white;
+}
+.wa-btn-dark-green:hover {
+    @apply bg-white text-green-500;
+}
