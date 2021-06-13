@@ -10,11 +10,6 @@ const Layout = ({ children }) => (
         <span className="text-sm text-gray-600">by Robert Starke</span>
       </footer>
     </section>
-    <style jsx global>{`
-      body {
-        background-image: url("../../../frontend/public/img/background.jpg");
-      }
-    `}</style>
   </div>
 );
 

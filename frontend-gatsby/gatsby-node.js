@@ -14,9 +14,11 @@ exports.createPages = async ({ graphql, actions }) => {
           age
           rating
           taste_notes {
+            id
             name
           }
           characteristics {
+            id
             name
           }
         }

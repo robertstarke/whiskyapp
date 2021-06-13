@@ -18,13 +18,13 @@ const Header = () => {
         }`}
       >
         <div className="wa-btn wa-nav-btn wa-btn-dark-green ml-2">
-          <Link href="/">Whiskies</Link>
+          <Link to="/">Whiskies</Link>
         </div>
         <div className="wa-btn wa-nav-btn wa-btn-dark-green ml-2">
-          <Link href="/">Distilleries</Link>
+          <Link to="/">Distilleries</Link>
         </div>
         <div className="wa-btn wa-nav-btn wa-btn-dark-green ml-2">
-          <Link href="/">Owners</Link>
+          <Link to="/">Owners</Link>
         </div>
       </nav>
       {showNav ? (

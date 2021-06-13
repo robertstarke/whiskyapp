@@ -8,7 +8,7 @@ const StaticRating = ({ rating }) => {
           className="w-3 h-3 fill-current text-yellow-400"
           viewBox="0 0 32 32"
         >
-          <use href="/img/icons/star.svg#star" />
+          <use href={`/icons/star.svg#star`} />
         </svg>
       )}
       {rating ? (
@@ -17,7 +17,7 @@ const StaticRating = ({ rating }) => {
         </div>
       ) : (
         <svg className="w-5 h-5 fill-current text-gray-500" viewBox="0 0 32 32">
-          <use href="/img/icons/noStar.svg#noStar" />
+          <use href={`/icons/noStar.svg#noStar`} />
         </svg>
       )}
     </div>

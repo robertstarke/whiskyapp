@@ -1,3 +1,7 @@
+body {
+    background-image: url("../../../frontend/public/img/background.jpg");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

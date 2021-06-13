@@ -74,9 +74,9 @@ const Whisky = ({ pageContext }) => {
               })}
             </div>
           </div>
-          <div className="mt-4 flex items-stretch">
+          <div className="mt-4">
             <Link to="/">
-              <span className="wa-btn wa-btn-green flex-auto h-9">Back</span>
+              <div className="wa-btn wa-btn-green h-9">Back</div>
             </Link>
           </div>
         </div>
