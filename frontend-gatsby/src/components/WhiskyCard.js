@@ -35,7 +35,7 @@ const WhiskyCard = ({ whisky }) => {
         </div>
       </div>
       <div className="px-3 pt-1 pb-3">
-        <Link href="/whisky/[id]" as={`/whisky/${whisky.id}`}>
+        <Link to={`/whisky/${whisky.id}`}>
           <span className="block w-full wa-btn wa-btn-green">Details</span>
         </Link>
       </div>
