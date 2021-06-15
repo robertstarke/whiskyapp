@@ -112,6 +112,7 @@ const Whisky = ({ distilleries, characteristics, tasteNotes }): JSX.Element => {
             className="block w-full px-2 py-1 border border-gray-400 active:border-gray-800 focus:border-gray-800 outline-none"
             onChange={(e) => setDistillery(e.target.value)}
           >
+            <option value={null}>None</option>
             {distilleries.map((distillery) => (
               <option key={distillery.id} value={distillery.id}>
                 {distillery.name}

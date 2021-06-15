@@ -6,13 +6,13 @@ const WhiskyCard = ({ whisky }) => {
 
   return (
     <div id={whisky._id} className="mb-3 bg-white shadow hover:shadow-md transition-shadow duration-300 rounded-sm">
-      <div className="flex items-center px-3 pt-1 pb-2 border-b-2 border-gray-200">
-        <div className="w-4/5 text-2xl text-green-800 font-thin tracking-wider">{whisky.name}</div>
-        <div className="w-1/5 text-right">
+      <div className="flex items-center justify-between px-3 pt-1 pb-2 border-b-2 border-gray-200">
+        <div className="text-2xl text-green-800 font-thin tracking-wider">{whisky.name}</div>
+        <div className="text-right">
           {whisky.distillery?.country && (
             <img
               src={`/img/countries/${whisky.distillery.country.toLowerCase().replace(" ", "-")}.png`}
-              alt="whisky.country"
+              alt={whisky.country}
               className="w-6 h-auto rounded-sm inline-block border border-green-800"
             />
           )}

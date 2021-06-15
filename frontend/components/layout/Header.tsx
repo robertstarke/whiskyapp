@@ -20,10 +20,10 @@ const Header = () => {
           <Link href="/">Whiskies</Link>
         </div>
         <div className="wa-btn wa-nav-btn wa-btn-dark-green ml-2">
-          <Link href="/">Distilleries</Link>
+          <Link href="/distilleries">Distilleries</Link>
         </div>
         <div className="wa-btn wa-nav-btn wa-btn-dark-green ml-2">
-          <Link href="/">Owners</Link>
+          <Link href="/owners">Owners</Link>
         </div>
       </nav>
       {showNav ? (

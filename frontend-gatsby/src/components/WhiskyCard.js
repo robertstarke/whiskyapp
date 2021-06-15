@@ -7,7 +7,7 @@ const WhiskyCard = ({ whisky }) => {
 
   return (
     <div
-      id={whisky._id}
+      id={whisky.id}
       className="mb-3 bg-white shadow hover:shadow-md transition-shadow duration-300 rounded-sm"
     >
       <div className="flex items-center px-3 pt-1 pb-2 border-b-2 border-gray-200">
