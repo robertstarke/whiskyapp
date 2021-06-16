@@ -14,6 +14,7 @@ COPY /frontend/package.json /frontend/yarn.lock ./
 COPY --from=deps /app/node_modules ./node_modules
 
 ENV NEXT_TELEMETRY_DISABLED 1
+ENV NODE_ENV development
 
 RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 
@@ -21,7 +22,7 @@ RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 FROM node:alpine AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV development
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001

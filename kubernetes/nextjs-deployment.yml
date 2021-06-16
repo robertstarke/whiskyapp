@@ -18,6 +18,9 @@ spec:
         - name: nextjs
           image: robertstarke/whiskyapp
           imagePullPolicy: Always
+          env:
+            - name: NODE_ENV
+              value: production
           ports:
             - containerPort: 3000
               protocol: TCP
