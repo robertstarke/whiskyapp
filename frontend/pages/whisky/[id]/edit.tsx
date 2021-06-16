@@ -133,6 +133,7 @@ const Whisky = ({ whisky, distilleries, characteristics, tasteNotes }): JSX.Elem
             defaultValue={whisky.distillery?.id}
             onChange={(e) => setDistillery(e.target.value)}
           >
+            <option value={null} selected disabled hidden>Choose distillery</option>
             {distilleries.map((distillery) => (
               <option key={distillery.id} value={distillery.id}>
                 {distillery.name}

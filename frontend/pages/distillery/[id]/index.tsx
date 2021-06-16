@@ -5,6 +5,8 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import { DELETE_DISTILLERY, DISTILLERY, DISTILLERY_IDS } from "~/utils/queries/distilleries.query";
 import DeleteOverlay from "~/components/overlays/DeleteOverlay";
 import WhiskyBadge from "~/components/WhiskyBadge";
+import CountryFlag from "~/components/CountryFlag";
+import countries from "~/utils/countries.map";
 
 export const getStaticProps = async ({ params }) => {
   const id = params.id;
@@ -55,22 +57,16 @@ const Distillery = ({ distillery }): JSX.Element => {
         id={distillery.id}
         className="relative max-w-md mx-auto bg-white shadow hover:shadow-md transition-shadow duration-300 rounded-sm"
       >
-        <div className="flex items-center justify-between px-3 pt-1 pb-2 border-b-2 border-gray-200">
-          <div className="text-2xl text-green-800 font-thin tracking-wider">{distillery.name}</div>
-          <div>
-            {distillery.country && (
-              <img
-                src={`/img/countries/${distillery.country.toLowerCase().replace(" ", "-")}.png`}
-                alt="whisky.country"
-                className="w-6 h-auto rounded-sm inline-block border border-green-800"
-              />
-            )}
+        <div className="flex items-center border-b-2 border-gray-200">
+          <div className="ml-3">
+            <CountryFlag countryCode={distillery.country} />
           </div>
+          <div className="px-3 pt-1 pb-2 text-2xl text-green-800 font-thin tracking-wider">{distillery.name}</div>
         </div>
         <div className="p-3">
           <div className="flex items-center justify-between text-green-800 text-lg">
             <span>
-              {distillery.country} {distillery.region && `(${distillery.region})`}
+              {countries.find(country => (country.countryCode === distillery.country))?.name} {distillery.region && `(${distillery.region})`}
             </span>
             {distillery.owner?.name && <span>{distillery.owner.name}</span>}
           </div>
@@ -82,7 +78,8 @@ const Distillery = ({ distillery }): JSX.Element => {
           )}
           <h3 className="mt-4 text-lg font-thin uppercase text-green-800 text-center">Whiskies</h3>
           <div className="flex items-center justify-center mt-2">
-            {distillery.whiskies?.map((whisky) => {
+            {distillery.whiskies.length === 0 && <span className="text-green-800">No whiskies were added yet</span>}
+            {distillery.whiskies.map((whisky) => {
               return <WhiskyBadge key={whisky.id} whisky={whisky} />;
             })}
           </div>

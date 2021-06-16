@@ -7,6 +7,8 @@ import StaticRating from "~/components/rating/StaticRating";
 import DeleteOverlay from "~/components/overlays/DeleteOverlay";
 import TasteNote from "~/components/TasteNote";
 import Type from "~/components/Type";
+import CountryFlag from "~/components/CountryFlag";
+import countries from "~/utils/countries.map";
 
 export const getStaticProps = async ({ params }) => {
   const id = params.id;
@@ -58,17 +60,13 @@ const Whisky = ({ whisky }): JSX.Element => {
         id={whisky.id}
         className="relative max-w-md mx-auto bg-white shadow hover:shadow-md transition-shadow duration-300 rounded-sm"
       >
-        <div className="flex items-center justify-between px-3 pt-1 pb-2 border-b-2 border-gray-200">
-          <div className="text-2xl text-green-800 font-thin tracking-wider">{whisky.name}</div>
-          <div>
+        <div className="flex items-center border-b-2 border-gray-200">
+          <div className="ml-3">
             {whisky.distillery?.country && (
-              <img
-                src={`/img/countries/${whisky.distillery.country.toLowerCase().replace(" ", "-")}.png`}
-                alt="whisky.country"
-                className="w-6 h-auto rounded-sm inline-block border border-green-800"
-              />
+              <CountryFlag countryCode={whisky.distillery.country} />
             )}
           </div>
+          <div className="px-3 pt-1 pb-2 text-2xl text-green-800 font-thin tracking-wider">{whisky.name}</div>
         </div>
         <div className="p-3">
           <div className="flex items-center justify-between">
@@ -85,19 +83,21 @@ const Whisky = ({ whisky }): JSX.Element => {
             </div>
             <div className="text-green-800 text-lg flex items-center">
               <span>
-                {whisky.distillery?.country} {whisky.distillery?.region && `(${whisky.distillery.region})`}
+                {countries.find(country => (country.countryCode === whisky.distillery?.country))?.name} {whisky.distillery?.region && `(${whisky.distillery.region})`}
               </span>
             </div>
           </div>
           <div className="mt-3">
-            <h3 className="text-xl font-thin uppercase text-green-800 text-center">Types</h3>
+            <h3 className="text-xl font-thin uppercase text-green-800 text-center">Characteristics</h3>
             <div className="flex items-center justify-center mt-2">
+              {whisky.characteristics.length === 0 && <span className="text-green-800">No characteristics were added yet</span>}
               {whisky.characteristics.map((characteristic) => {
                 return <Type key={characteristic.id} type={characteristic.name} />;
               })}
             </div>
             <h3 className="mt-4 text-lg font-thin uppercase text-green-800 text-center">Taste Notes</h3>
             <div className="flex items-center justify-center mt-2">
+              {whisky.taste_notes.length === 0 && <span className="text-green-800">No taste notes were added yet</span>}
               {whisky.taste_notes.map((tasteNote) => {
                 return <TasteNote key={tasteNote.id} tasteNote={tasteNote.name} />;
               })}

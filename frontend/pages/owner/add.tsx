@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { ApolloProvider } from "@apollo/react-hooks";
 import client from "~/utils/apollo-client";
 import { ADD_OWNER } from "~/utils/queries/owners.query";
+import CountrySelect from "~/components/CountrySelect";
 
 const Distillery = (): JSX.Element => {
   const router = useRouter();
@@ -41,14 +42,7 @@ const Distillery = (): JSX.Element => {
             placeholder="Name"
             onChange={(e) => setName(e.target.value)}
           />
-          <input
-            type="text"
-            id="country"
-            name="country"
-            className="block w-full px-2 py-1 border border-gray-400 active:border-gray-800 focus:border-gray-800 outline-none"
-            placeholder="Country"
-            onChange={(e) => setCountry(e.target.value)}
-          />
+          <CountrySelect defaultValue={country} setCountry={setCountry} />
           <button type="submit" className="w-full wa-btn wa-btn-green">
             Add
           </button>

@@ -4,6 +4,7 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import client from "~/utils/apollo-client";
 import { OWNERS_FOR_DISTILLERIES } from "~/utils/queries/owners.query";
 import { ADD_DISTILLERY } from "~/utils/queries/distilleries.query";
+import CountrySelect from "~/components/CountrySelect";
 
 export const getStaticProps = async () => {
   const { data: ownerData } = await client.query({
@@ -64,14 +65,7 @@ const Distillery = ({ owners }): JSX.Element => {
             placeholder="name"
             onChange={(e) => setName(e.target.value)}
           />
-          <input
-            type="text"
-            id="country"
-            name="country"
-            className="block w-full px-2 py-1 border border-gray-400 active:border-gray-800 focus:border-gray-800 outline-none"
-            placeholder="Country"
-            onChange={(e) => setCountry(e.target.value)}
-          />
+          <CountrySelect defaultValue={country} setCountry={setCountry} />
           <input
             type="text"
             id="region"
@@ -93,7 +87,7 @@ const Distillery = ({ owners }): JSX.Element => {
             className="block w-full px-2 py-1 border border-gray-400 active:border-gray-800 focus:border-gray-800 outline-none"
             onChange={(e) => setOwner(e.target.value)}
           >
-            <option value={null}>None</option>
+            <option value={null} selected disabled hidden>Choose owner</option>
             {owners.map((owner) => (
               <option key={owner.id} value={owner.id}>
                 {owner.name}

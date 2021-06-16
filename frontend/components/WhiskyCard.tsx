@@ -1,22 +1,19 @@
 import Link from "next/link";
 import StaticRating from "~/components/rating/StaticRating";
+import CountryFlag from "~/components/CountryFlag";
 
 const WhiskyCard = ({ whisky }) => {
   const age = whisky.age === "NAS" ? "NAS" : whisky.age + " years";
 
   return (
     <div id={whisky._id} className="mb-3 bg-white shadow hover:shadow-md transition-shadow duration-300 rounded-sm">
-      <div className="flex items-center justify-between px-3 pt-1 pb-2 border-b-2 border-gray-200">
-        <div className="text-2xl text-green-800 font-thin tracking-wider">{whisky.name}</div>
-        <div className="text-right">
+      <div className="flex items-center border-b-2 border-gray-200">
+        <div className="ml-3">
           {whisky.distillery?.country && (
-            <img
-              src={`/img/countries/${whisky.distillery.country.toLowerCase().replace(" ", "-")}.png`}
-              alt={whisky.country}
-              className="w-6 h-auto rounded-sm inline-block border border-green-800"
-            />
+            <CountryFlag countryCode={whisky.distillery.country} />
           )}
         </div>
+        <div className="px-3 pt-1 pb-2 text-2xl text-green-800 font-thin tracking-wider">{whisky.name}</div>
       </div>
       <div className="flex items-center justify-between px-3 pt-3 pb-4">
         <div>
