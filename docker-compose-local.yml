@@ -1,13 +1,4 @@
 services:
-  nextjs:
-    image: robertstarke/whiskyapp
-    build:
-      context: .
-    ports:
-      - 3000:3000
-    depends_on:
-      - strapi
-
   strapi:
     container_name: strapi
     image: strapi/strapi
@@ -18,10 +9,12 @@ services:
       DATABASE_PORT: 27017
       DATABASE_USERNAME: root
       DATABASE_PASSWORD: root
+    networks:
+      - whiskyapp
     ports:
       - 1337:1337
     volumes:
-        - strapi_whiskyapp:/srv/app
+      - strapi_whiskyapp:/srv/app
     depends_on:
       - mongo
 
@@ -31,12 +24,16 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=root
       - MONGO_INITDB_DATABASE=whiskyapp
+    networks:
+      - whiskyapp
     volumes:
       - db_whiskyapp:/data/db
 
   mongo-express:
     image: mongo-express
     restart: always
+    networks:
+      - whiskyapp
     ports:
       - 8081:8081
     environment:
@@ -45,8 +42,24 @@ services:
     depends_on:
       - mongo
 
+  nextjs:
+    image: whiskyapp
+    build:
+      context: .
+      dockerfile: Dockerfile-local
+    networks:
+      - whiskyapp
+    ports:
+      - 3000:3000
+    depends_on:
+      - strapi
+
 volumes:
   db_whiskyapp:
     driver: local
   strapi_whiskyapp:
     driver: local
+
+networks:
+  whiskyapp:
+    name: whiskyapp

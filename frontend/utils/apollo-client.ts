@@ -1,6 +1,5 @@
 import { ApolloClient, InMemoryCache, HttpLink, from } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
-import getConfig from "next/config";
 
 const httpLink = new HttpLink({
   uri: process.env.CMS_URL_BACKEND || process.env.NEXT_PUBLIC_CMS_URL_FRONTEND
