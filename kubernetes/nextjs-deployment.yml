@@ -18,9 +18,6 @@ spec:
         - name: nextjs
           image: robertstarke/whiskyapp
           imagePullPolicy: Always
-          env:
-            - name: CMS_URL_BACKEND
-              value: http://localhost:1337/graphql
           ports:
             - containerPort: 3000
               protocol: TCP

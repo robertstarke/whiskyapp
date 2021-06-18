@@ -1,8 +1,11 @@
+import getConfig from 'next/config'
 import { ApolloClient, InMemoryCache, HttpLink, from } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
+
 const httpLink = new HttpLink({
-  uri: process.env.CMS_URL_BACKEND || process.env.NEXT_PUBLIC_CMS_URL_FRONTEND
+  uri: serverRuntimeConfig.INTERNAL_URL || publicRuntimeConfig.PUBLIC_URL
 });
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
